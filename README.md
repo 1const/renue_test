@@ -7,4 +7,7 @@
 
 
 
-Для запуска приложения: java -jar ./target/airports-jar-with-dependencies.jar 2
+Для запуска приложения: 
+1)mvn clean package
+2)cd target
+3)java -Xmx7m -jar airports-search-renue.jar 2
