@@ -4,10 +4,11 @@ import com.akmal.utils.FileReader;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 public class Main {
-    private static final String PATH = "src\\main\\resources\\airports.csv";
-
     public static void main(String[] args) throws IOException {
         int columnNumber = -1;
 
@@ -19,8 +20,9 @@ public class Main {
                 return;
             }
 
-            CSVSearcher csvSearcher = new CSVSearcher(PATH, columnNumber);
-            FileReader fileReader = new FileReader(new File(PATH));
+            String path = inputFilePath();
+            CSVSearcher csvSearcher = new CSVSearcher(path, columnNumber);
+            FileReader fileReader = new FileReader(new File(path));
             Menu menu = new Menu(csvSearcher, fileReader);
             menu.start();
 
@@ -29,5 +31,16 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    public static String inputFilePath() {
+        String filePath = "";
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.print("Введите путь к файлу: ");
+            filePath = scanner.next();
+            if (Files.isRegularFile(Path.of(filePath))) break;
+            System.out.println("Файла по введённому пути не существует! Повторите попытку!");
+        }
+        return filePath;
     }
 }

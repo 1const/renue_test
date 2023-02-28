@@ -28,7 +28,6 @@ public class Menu {
         while (true) {
             System.out.println("Введите строку: ");
             input = scanner.nextLine();
-
             if (input.equals(QUIT_PHRASE)) break;
 
             long start = System.currentTimeMillis();
