@@ -7,7 +7,10 @@
 
 
 
-Для запуска приложения: 
+Для запуска приложения:
+
 1)mvn clean package
+
 2)cd target
+
 3)java -Xmx7m -jar airports-search-renue.jar 2
